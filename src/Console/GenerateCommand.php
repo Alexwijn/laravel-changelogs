@@ -45,7 +45,7 @@ class GenerateCommand extends SymfonyCommand
             }
 
             $output->writeln('Generating logs for ' . $tag->name . '...');
-            $log = '# ' . $tag->name . ' (' . $tag->date->format('d-m-Y') . ')' . "\n\n";
+            $log = '## ' . $tag->name . ' (' . $tag->date->format('d-m-Y') . ')' . "\n\n";
             $log .= $changelog->generate($revisions, $url);
 
             file_put_contents($file, $logs[] = $log);
@@ -56,7 +56,7 @@ class GenerateCommand extends SymfonyCommand
         }
 
         $output->writeln('Generating logs for UNRELEASED...');
-        $unreleased = '# UNRELEASED ' . "\n\n";
+        $unreleased = '## UNRELEASED ' . "\n\n";
         $unreleased .= $changelog->generate(trim($tag->name . '...HEAD', '.'), $url);
 
         file_put_contents('CHANGELOG.md', $unreleased . implode("\n", array_reverse($logs)));
