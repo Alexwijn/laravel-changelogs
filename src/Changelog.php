@@ -30,7 +30,7 @@ class Changelog
         $url = trim($url, '/');
 
         $format = '%s [%aN]';
-        if ($url !== null) {
+        if (!empty($url)) {
             $format = '%s [%aN] [[%h](' . $url . '/commit/%h)]';
         }
 
@@ -50,7 +50,7 @@ class Changelog
         ksort($groups);
 
         foreach ($groups as $group => $messages) {
-            $changelog .= '## ' . $group . "\n";
+            $changelog .= '### ' . $group . "\n";
             foreach ($messages as $message) {
                 $changelog .= "\n* " . ucfirst($message) . "\n";
             }
