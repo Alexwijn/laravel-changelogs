@@ -1,0 +1,39 @@
+{
+  "name": "alexwijn/laravel-changelogs",
+  "description": "Generates changelogs based on commits.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex Wijnholds"
+    }
+  ],
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "bin": [
+    "bin/changelogs"
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "cpliakas/git-wrapper": "~2.2",
+    "illuminate/support": "~4.1 || ~5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0",
+    "orchestra/testbench": "~3.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Alexwijn\\Changelogs\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Alexwijn\\Changelogs\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
