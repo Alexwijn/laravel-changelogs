@@ -56,7 +56,7 @@ class GenerateCommand extends SymfonyCommand
         }
 
         $output->writeln('Generating logs for UNRELEASED...');
-        $unreleased = '## UNRELEASED ' . "\n\n";
+        $unreleased = '## LATEST ' . "\n\n";
         $unreleased .= $changelog->generate(trim($tag->name . '...HEAD', '.'), $url);
 
         file_put_contents('CHANGELOG.md', $unreleased . implode("\n", array_reverse($logs)));
