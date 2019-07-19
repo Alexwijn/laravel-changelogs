@@ -3,6 +3,7 @@
 namespace Alexwijn\Changelogs\Console;
 
 use Alexwijn\Changelogs\Changelog;
+use Carbon\Carbon;
 use GitWrapper\GitWrapper;
 use Illuminate\Support\Fluent;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
@@ -58,7 +59,7 @@ class GenerateCommand extends SymfonyCommand
         $output->writeln('Generating logs for UNRELEASED...');
 
         if (!empty($unreleased = $changelog->generate(trim($tag->name . '...HEAD', '.'), $url))) {
-            $unreleased = '## Latest (' . now()->format('d-m-Y') . ")\n\n" . $unreleased;
+            $unreleased = '## Latest (' . Carbon::today()->format('d-m-Y') . ")\n\n" . $unreleased;
         }
 
         file_put_contents('CHANGELOG.md', $unreleased . implode("\n", array_reverse($logs)));
